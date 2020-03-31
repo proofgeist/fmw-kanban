@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+html body {
+  overflow: hidden;
+}
+
+.itemBy {
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  /* float: right; */
+  background: aqua;
+  color: #fff;
+  font-weight: 600;
+  font-size: 78%;
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 8px;
+  position: relative;
+  right: 10px;
+  flex: 0 0 auto;
+  border: 1px solid #fff;
+  margin-right: -7px;
+}
+
+.flexButtonRowRight {
+  flex: auto;
+  flex-direction: row-reverse;
+  display: flex;
+  font-size: 60%;
+  padding-bottom: 10px;
+}
+
+.lane {
+  background-color: "#fff";
+  color: "#04081A";
+  text-align: "left";
+  padding-top: "20px";
+  width: "350px";
+  border-radius: "10px";
+}
+/* .ensureWin {
+  flex-basis: auto !important;
+} */
+/* .fYZyZu {
+  flex-basis: auto !important;
+} */
+/* .smooth-dnd-container vertical {
+  flex-basis: auto !important;
+} */
+hr {
+  margin-top: 0.2em !important;
+  margin-bottom: 0.2em !important;
+  border-width: 1px;
+}
+
+.container {
+  -ms-overflow-style: none;
+  overflow: auto;
+}

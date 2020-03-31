@@ -1,0 +1,54 @@
+{
+  "laneStyleObj": {
+    "backgroundColor": "#3A89C9",
+    "color": "#fff",
+    "textAlign": "left",
+    "paddingTop": "20px",
+    "width": "400px",
+    "borderRadius": "4px"
+  },
+  "boardStyleObj": { "backgroundColor": "#fff" },
+  "cardStyleObj": {
+    "boxShadow": "3px 5px 9px -4px rgba(0,0,0,0.68)",
+    "backgroundColor": "#fff",
+    "textAlign": "left",
+    "maxWidth": 300,
+    "width": 300,
+
+    "borderRadius": "3px",
+    "paddingBottom": "10px",
+    "marginBottom": "10px"
+  },
+  "titleContentStyleObj": {
+    "textAlign": "Left",
+    "paddingLeft": "5px",
+    "paddingRight": "10px",
+    "paddingTop": "10px",
+    "border": "0px solid",
+    "wordWrap": "break-word",
+    "fontSize": "16px",
+    "color": "#F26C4F",
+    "fontWeight": "900"
+  },
+
+  "rightContentStyleObj": {
+    "color": "#94C7B6",
+    "padding": "1px",
+    "paddingRight": "6px",
+    "fontWeight": "700",
+    "fontSize": "16px",
+    "textAlign": "right"
+  },
+  "detailContentStyleObj": {
+    "color": "#1B325F",
+    "paddingLeft": "10px",
+    "paddingBottom": "10px"
+  },
+  "footerContentStyleObj": {},
+  "additionalContentStyleObj": {
+    "color": "#3A89C9",
+    "paddingLeft": "15px",
+    "paddingBottom": "20px"
+  },
+  "tagFieldStyleObj": { "fontSize": "70%" }
+}

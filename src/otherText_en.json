@@ -1,0 +1,111 @@
+{
+  "RequiredMenu": {
+    "MenuLabel": "Required",
+    "PageTitle": "Required Items",
+    "Fields": {
+      "DataSourceLayout": {
+        "help": "Select the layout you want to use to gather your records.",
+        "label": "Data Source Layout",
+        "rightLabel": "Layout"
+      },
+      "PrimaryKeyField": {
+        "help": "The is the unique primary key of the the table you are using.",
+        "label": "Primary Key",
+        "rightLabel": "Text or Number Field"
+      }
+    }
+  },
+  "OptionalMenu": {
+    "MenuLabel": "optional",
+    "PageTitle": "Optional",
+    "Fields": {
+      "DescriptionField": {
+        "help": "The field holding the description of the task.",
+        "label": "Description Field",
+        "rightLabel": "Text Field"
+      },
+      "AdditionalInfoField": {
+        "help": "A field showing additional information.",
+        "label": "Additional Info",
+        "rightLabel": "Text Field"
+      },
+
+      "AssignedTo": {
+        "help": "The field holding the assignee.",
+        "label": "Assigned To Field",
+        "rightLabel": "Text Field"
+      },
+      "LabelField": {
+        "help": "The field holding a label.",
+        "label": "Label Field",
+        "rightLabel": "Text Field"
+      },
+      "CardStyle": {
+        "help": "Choose the FileMaker value list that holds the style of the cards.",
+        "label": "Card Style",
+        "rightLabel": "Text Field"
+      }
+    }
+  },
+  "SettingsMenu": {
+    "MenuLabel": "settings",
+    "PageTitle": "Settings",
+    "Fields": {
+      "Style": {
+        "help": "Choose the color scheme for the cards.",
+        "label": "Style",
+        "rightLabel": "Text Field"
+      },
+      "CardDraggable": {
+        "help": "Checking this will enable cards to be dragged.",
+        "label": "Drag Cards?",
+        "rightLabel": "Text Field"
+      }
+    }
+  },
+  "FilterMenu": {
+    "MenuLabel": "filter",
+    "PageTitle": "Filter",
+    "Fields": {
+      "FilterField": {
+        "help": "The field to search.",
+        "label": "Search field",
+        "rightLabel": "Text Field"
+      },
+      "QueryField": {
+        "help": "The field to store the query in.",
+        "label": "Query Field",
+        "rightLabel": "Text Field"
+      }
+    }
+  },
+  "LaneSetupMenu": {
+    "MenuLabel": "laneSetup",
+    "PageTitle": "Lane Setup",
+    "Fields": {
+      "StatusField": {
+        "help": "",
+        "rightLabel": "Text Field",
+        "label": "Lane Placement Field"
+      },
+      "StatusSort": {
+        "help": "",
+        "rightLabel": "Value List",
+        "label": "Lanes Value List"
+      },
+      "SortField": {
+        "help": "",
+        "rightLabel": "Number Field",
+        "label": "Sort Field"
+      }
+    },
+    "Instructions": {
+      "laneInstrOne": " A Kanban board consists of lanes and cards. Each lane is a unique value in a field in the source table. Lanes can come from many different fields: status, assignee, month, etc.",
+      "laneInstrTwo": "Each card is a record that belongs in that lane.",
+      "laneInstrThree": "Choose a value list, a field that will sort cards into lanes, and a field by which the cards will be sorted.",
+      "laneValListInstr": "The value list defines the lanes, and the order of the values in that list determines the lanes' order. The value list can be hard coded or come from a field in a table.",
+      "lanePlacementInstr": "The 'Lane Placement Field' determines into which lane each card is placed. Use the field that corresponds to the chosen value list.",
+      "laneSortInstr": "Pick the field by which the cards in the lanes will be sorted. You can have multiple sorts in a table, one for each way you wish to define the lanes."
+    }
+  }
+}

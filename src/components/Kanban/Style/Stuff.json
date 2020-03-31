@@ -1,0 +1,70 @@
+{
+  "data": {
+    "lanes": [
+      {
+        "id": "lane1",
+        "style": { "backgroundColor": "purple" },
+        "title": "DONE",
+        "cards": [
+          {
+            "id": "Card100",
+            "title": "ddddd",
+            "description": "This is a very long description. There's a lot to write here, and I want to see how much fits in.",
+            "more": "Here is more info",
+            "label": "30 mins",
+            "draggable": true,
+            "tags": [
+              {
+                "key": 1,
+                "bgcolor": "#FDBDC2",
+                "color": "#000000",
+                "title": "Client Communication"
+              },
+              {
+                "key": 2,
+                "bgcolor": "#F5F2F2",
+                "color": "#000000",
+                "title": "Relationships"
+              }
+            ],
+
+            "style": {
+              "card": { "backgroundColor": "#f1fa70" },
+              "title": {
+                "color": "purple",
+                "paddingLeft": "10px",
+                "paddingTop": "10px"
+              },
+              "description": { "paddingLeft": "10px", "color": "red" }
+            }
+          },
+          {
+            "id": "Card2",
+            "title": "Pay Rent",
+            "description": "Transfer via NEFT",
+            "label": "5 mins",
+            "metadata": {
+              "sha": "be312a1"
+            }
+          }
+        ]
+      },
+      {
+        "id": "lane2",
+        "title": "Completed",
+        "label": "0/0",
+        "cards": [
+          {
+            "id": "Card3",
+            "title": "NEW THING",
+            "description": "Transfer via NEFT",
+            "label": "5 mins",
+            "metadata": {
+              "sha": "be312a1"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
