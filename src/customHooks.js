@@ -1,4 +1,4 @@
-import { fmFetch, getConfig, getConfigs } from "fmw-utils";
+import { fmFetch, getConfig } from "fmw-utils";
 import useSWR from "swr";
 import { FIND_SCRIPT } from "./constants";
 /*
@@ -30,6 +30,16 @@ export const useFindRecords = query => {
       );
     }
     const dataArray = result.response.data;
+    const obj = { style: getConfig("Style") };
+    if (window.onWebdInternalRefresh) {
+      // this will only run on WebD
+      window.sessionStorage.setItem(
+        "kanban.cache",
+        JSON.stringify({
+          theme: getConfig("Style")
+        })
+      );
+    }
     return dataArray;
   };
 

@@ -6,12 +6,10 @@ import {
   ConfigContent,
   MiniPage,
   Control
-} from "./lib/Configuration";
-import otherText from "..//../src/otherText_en.json";
-import defaultConfig from "..//../src/configuration.json";
-const laneSetup = otherText.LaneSetupMenu.Fields;
-console.log("laneSetup", laneSetup);
+} from "./lib/Configurator/ConfigWrapper";
+import i18n from "../i18n";
 
+const Strings = i18n();
 export default function({ menuProps, currentNav, proper }) {
   return (
     <>
@@ -19,7 +17,7 @@ export default function({ menuProps, currentNav, proper }) {
         <ConfigMenuItem
           {...menuProps}
           link="required"
-          label={"Required"}
+          label={Strings.RequiredMenu.MenuLabel}
           fieldsToTrackErrorsArray={[
             "DataSourceLayout",
             "PrimaryKeyField",
@@ -30,13 +28,13 @@ export default function({ menuProps, currentNav, proper }) {
         <ConfigMenuItem
           {...menuProps}
           link="lanes"
-          label="Lane Setup"
+          label={Strings.LaneSetupMenu.MenuLabel}
           fieldsToTrackErrorsArray={["StatusSort", "StatusField", "SortField"]}
         />
         <ConfigMenuItem
           {...menuProps}
           link="optional"
-          label="Optional"
+          label={Strings.OptionalMenu.MenuLabel}
           fieldsToTrackErrorsArray={[
             "DescriptionField",
             "LabelField",
@@ -48,46 +46,41 @@ export default function({ menuProps, currentNav, proper }) {
         <ConfigMenuItem
           {...menuProps}
           link="settings"
-          label="Settings"
+          label={Strings.SettingsMenu.MenuLabel}
           fieldsToTrackErrorsArray={["Style", "LaneDraggable", "CardDraggable"]}
         />
 
         <ConfigMenuItem
           {...menuProps}
           link="filter"
-          label="Filter"
+          label={Strings.FilterMenu.MenuLabel}
           fieldsToTrackErrorsArray={[]}
         />
       </ConfigMenu>
       <ConfigContent>
         <MiniPage current={currentNav} name="required">
-          <h4>{otherText.RequiredMenu.pageTitle}</h4>
+          <h4>{Strings.RequiredMenu.pageTitle}</h4>
           <Control {...proper("DataSourceLayout")}></Control>
           <Control {...proper("PrimaryKeyField")}></Control>
           <Control {...proper("TitleField")}></Control>
         </MiniPage>
         <MiniPage current={currentNav} name="lanes">
-          <h4>Lane Setup</h4>
+          <h4>{Strings.LaneSetupMenu.pageTitle}</h4>
           <p className="text-info medium">
-            A Kanban board consists of lanes and cards. Each lane is a unique
-            value in a field in the source table. Lanes can come from many
-            different fields: status, assignee, month, etc.
+            {Strings.LaneSetupMenu.Instructions.laneInstrOne}
           </p>
           <p className="text-info medium">
-            <strong>Each card is a record that belongs in that lane.</strong>
+            <strong> {Strings.LaneSetupMenu.Instructions.laneInstrTwo}</strong>
           </p>
           <p className="text-info medium">
-            Choose a value list, a field that will sort cards into lanes, and a
-            field by which the cards will be sorted.
+            {Strings.LaneSetupMenu.Instructions.laneInstrThree}
           </p>
 
           <hr></hr>
           <Row>
             <Col>
               <p className="text-primary small">
-                The value list defines the lanes, and the order of the values in
-                that list determines the lanes' order. The value list can be
-                hard coded or come from a field in a table.
+                {Strings.LaneSetupMenu.Instructions.laneValListInstr}
               </p>
             </Col>
             <Col>
@@ -99,9 +92,7 @@ export default function({ menuProps, currentNav, proper }) {
             <Col>
               {" "}
               <p className="text-primary small">
-                The 'Lane Placement Field' determines into which lane each card
-                is placed. Use the field that corresponds to the chosen value
-                list.
+                {Strings.LaneSetupMenu.Instructions.lanePlacementInstr}
               </p>
             </Col>
             <Col>
@@ -113,9 +104,7 @@ export default function({ menuProps, currentNav, proper }) {
             <Col>
               {" "}
               <p className="text-primary small">
-                Pick the field by which the cards in the lanes will be sorted.
-                You can have multiple sorts in a table, one for each way you
-                wish to define the lanes.
+                {Strings.LaneSetupMenu.Instructions.laneSortInstr}
               </p>
             </Col>
             <Col>
@@ -124,7 +113,7 @@ export default function({ menuProps, currentNav, proper }) {
           </Row>
         </MiniPage>
         <MiniPage current={currentNav} name="optional">
-          <h4>Optional Fields</h4>
+          <h4>{Strings.OptionalMenu.pageTitle}</h4>
           <Control {...proper("DescriptionField")}></Control>
           <Control {...proper("LabelField")}></Control>
           <Control {...proper("AdditionalInfoField")}></Control>
@@ -133,13 +122,13 @@ export default function({ menuProps, currentNav, proper }) {
         </MiniPage>
 
         <MiniPage current={currentNav} name="settings">
-          <h4>Settings</h4>
+          <h4>{Strings.SettingsMenu.pageTitle}</h4>
           <Control {...proper("Style")}></Control>
           {/* <Control {...proper("LaneDraggable")}></Control> */}
           <Control {...proper("CardDraggable")}></Control>
         </MiniPage>
         <MiniPage current={currentNav} name="filter">
-          <h4>Filter</h4>
+          <h4>{Strings.FilterMenu.pageTitle}</h4>
           <Control {...proper("FilterField")}></Control>
           <Control {...proper("QueryField")}></Control>
         </MiniPage>

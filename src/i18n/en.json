@@ -12,11 +12,16 @@
         "help": "The is the unique primary key of the the table you are using.",
         "label": "Primary Key",
         "rightLabel": "Text or Number Field"
+      },
+      "TitleField": {
+        "help": "The field holding the title of the task.",
+        "label": "Name or Title Field",
+        "rightLabel": "Text Field"
       }
     }
   },
   "OptionalMenu": {
-    "MenuLabel": "optional",
+    "MenuLabel": "Optional",
     "PageTitle": "Optional",
     "Fields": {
       "DescriptionField": {
@@ -48,23 +53,25 @@
     }
   },
   "SettingsMenu": {
-    "MenuLabel": "settings",
+    "MenuLabel": "Settings",
     "PageTitle": "Settings",
     "Fields": {
       "Style": {
         "help": "Choose the color scheme for the cards.",
         "label": "Style",
-        "rightLabel": "Text Field"
+        "rightLabel": "Text Field",
+        "options": ["Blue", "Green", "Red", "Purple", "Gray"]
       },
       "CardDraggable": {
         "help": "Checking this will enable cards to be dragged.",
         "label": "Drag Cards?",
-        "rightLabel": "Text Field"
+        "rightLabel": "Text Field",
+        "checkboxLabel": "Yes"
       }
     }
   },
   "FilterMenu": {
-    "MenuLabel": "filter",
+    "MenuLabel": "Filter",
     "PageTitle": "Filter",
     "Fields": {
       "FilterField": {
@@ -80,7 +87,7 @@
     }
   },
   "LaneSetupMenu": {
-    "MenuLabel": "laneSetup",
+    "MenuLabel": "Lane Setup",
     "PageTitle": "Lane Setup",
     "Fields": {
       "StatusField": {

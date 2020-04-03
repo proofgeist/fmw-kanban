@@ -1,7 +1,6 @@
 //functions
-import { getConfig, getFMFieldName, fmCallScript } from "fmw-utils";
-import useSWR, { mutate } from "swr";
-import { FIND_SCRIPT } from ".//../../constants";
+import { fmCallScript } from "fmw-utils";
+import { mutate } from "swr";
 export const onCardClick = cardId => {
   const obj = { id: cardId };
   // alert(cardId);
@@ -16,7 +15,6 @@ window.refreshData = refreshData;
 
 export const onLaneDragEnd = (oldPos, newPos, payload) => {
   const obj = { id: payload.id, newPos, oldPos };
-  var newObj = JSON.stringify(obj);
   dispatchEventToFm("laneDrag", obj);
 };
 

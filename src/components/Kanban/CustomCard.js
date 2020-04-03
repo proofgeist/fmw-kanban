@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { cardStyles } from "./Style/cardStyles";
 import {
   cardStyleObj,
@@ -66,13 +66,15 @@ function MyCard(initialProps) {
           {initialProps.additional}
         </Detail>
       )}
-      {
+      {initialProps.assignedTo ? (
         <div className="flexButtonRowRight">
           <div className="itemBy" style={circle}>
             {initialProps.assignedTo}
           </div>
         </div>
-      }
+      ) : (
+        ""
+      )}
       {initialProps.tags && (
         <Footer style={theFooterStyle}>
           {initialProps.tags.map(tag => (

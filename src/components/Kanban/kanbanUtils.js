@@ -1,16 +1,4 @@
-import { boardStyleObj, laneStyleObj } from "./Style/boardStyles";
-import {
-  cardStyleObj,
-  rightContentStyleObj,
-  titleContentStyleObj,
-  detailContentStyleObj,
-  footerContentStyleObj,
-  additionalContentStyleObj,
-  tagFieldStyleObj
-} from "./Style/boardStyles";
-import { useFindRecords } from "../../customHooks";
-import { getConfig, getFMFieldName, fmCallScript } from "fmw-utils";
-import { NewLaneSection } from "react-trello/dist/styles/Base";
+import { getConfig, getFMFieldName } from "fmw-utils";
 export const createLanesFromRecords = data => {
   const lanes = [];
 
@@ -76,13 +64,12 @@ export const reconfigureObj = data => {
       cardStyle
     };
     return obj;
-    console.log(obj);
   });
   return newArray;
 };
 export const createLanesWithCards = data => {
   const lanes = createLanesObj(getUniqueLanes(data));
-
+  console.log("Lanes", lanes);
   const obj = lanes.map(function(item, i) {
     var whichLaneId = item.id;
     const getCards = data.filter(item => item.status === whichLaneId);
@@ -106,14 +93,6 @@ const getUniqueLanes = data => {
 };
 
 const createLanesObj = lanes => {
-  const lane = {
-    id: "",
-    label: "label",
-    laneTextColor: "#fff",
-    position: 0,
-    title: ""
-  };
-
   const newLanes = lanes.map(function(e, i) {
     let newObj = { id: e, laneTextColor: "#fff", position: i, title: e };
     return newObj;

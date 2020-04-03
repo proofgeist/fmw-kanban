@@ -1,167 +1,105 @@
 {
   "DataSourceLayout": {
-    "category": "Required",
-    "help": "Select the layout you want to use to gather your records.",
-    "label": "Data Source Layout",
     "type": "select",
     "options": [""],
     "value": "",
     "reScanOnChange": true,
-    "required": true,
-    "fmSchema": { "type": "Layout" },
-    "rightLabel": "Layout"
+    "required": true
   },
   "PrimaryKeyField": {
-    "category": "Required",
-    "help": "The is the unique primary key of the the table you are using.",
-    "label": "Primary Key",
-    "rightLabel": "Text or Number Field",
     "type": "select",
     "options": [""],
     "value": "",
-    "required": true,
-    "fmSchema": { "type": "Field" }
+    "required": true
   },
   "StatusField": {
-    "category": "Required",
     "type": "select",
     "options": [""],
     "value": "",
-    "required": true,
-    "fmSchema": { "type": "Field" }
+    "required": true
   },
   "SortField": {
-    "category": "Required",
     "type": "select",
     "options": [""],
     "value": "",
-    "required": true,
-    "fmSchema": { "type": "Field" }
+    "required": true
   },
   "StatusSort": {
-    "category": "Required",
     "type": "select",
     "options": [""],
     "value": "",
-    "required": true,
-    "fmSchema": { "type": "Field" }
+    "required": true
   },
   "TitleField": {
-    "help": "The field holding the title of the task.",
-    "label": "Name or Title Field",
-    "rightLabel": "Text Field",
     "type": "select",
     "options": [""],
     "value": "",
-    "required": true,
-    "fmSchema": { "type": "Field" }
+    "required": true
   },
   "DescriptionField": {
-    "category": "Required",
-    "help": "The field holding the description of the task.",
-    "label": "Description Field",
     "type": "select",
     "options": [""],
     "value": "",
 
-    "required": false,
-    "fmSchema": { "type": "Field" },
-    "rightLabel": "Text Field"
+    "required": false
   },
   "FilterField": {
-    "category": "Required",
-    "label": "Search field",
     "type": "select",
     "options": [""],
     "value": "",
-    "required": false,
-    "fmSchema": { "type": "Field" },
-    "rightLabel": "Text Field"
+    "required": false
   },
   "QueryField": {
-    "category": "Required",
-    "help": "The field to store the query in.",
-    "label": "Query Field",
     "type": "select",
     "options": [""],
     "value": "",
-    "required": false,
-    "fmSchema": { "type": "Field" },
-    "rightLabel": "Text Field"
+    "required": false
   },
   "LabelField": {
-    "category": "Required",
-    "help": "The field holding a label.",
-    "label": "Label Field",
     "type": "select",
     "options": [""],
     "value": "",
     "required": false,
-    "fmSchema": { "type": "Field" },
-    "rightLabel": "Text Field"
+    "fmSchema": { "type": "Field" }
   },
   "AdditionalInfoField": {
-    "category": "Required",
-    "help": "A field showing additional information.",
-    "label": "Additional Info",
     "type": "select",
     "options": [""],
     "value": "",
     "required": false,
-    "fmSchema": { "type": "Field" },
-    "rightLabel": "Text Field"
+    "fmSchema": { "type": "Field" }
   },
 
   "AssignedTo": {
-    "category": "Required",
-    "help": "The field holding the assignee.",
-    "label": "Assigned To Field",
     "type": "select",
     "options": [""],
     "value": "",
-    "required": false,
-    "fmSchema": { "type": "Field" },
-    "rightLabel": "Text Field"
+    "required": false
   },
 
   "LaneSortOrder": {
     "value": []
   },
   "CardStyle": {
-    "category": "Required",
-    "help": "Choose the FileMaker value list that holds the style of the cards.",
-    "label": "Card Style",
     "type": "select",
     "options": [""],
     "value": "",
-    "required": false,
-    "fmSchema": { "type": "Field" },
-    "rightLabel": "Text Field"
+    "required": false
   },
   "Style": {
-    "category": "Required",
-    "help": "Choose the color scheme for the cards.",
-    "label": "Style",
     "type": "select",
-    "options": ["Blue", "Green", "Red", "Purple", "Gray"],
+
     "value": "Blue",
     "required": false
   },
   "CardDraggable": {
-    "category": "Required",
-    "help": "Checking this will enable cards to be dragged.",
-    "label": "Drag Cards?",
     "type": "checkbox",
-    "checkboxLabel": "Yes",
+
     "value": true,
     "required": false
   },
   "LaneDraggable": {
-    "category": "Required",
-    "help": "Checking this will enable lanes to be dragged. NOTE: Add additional logic to 'KanbanEvents' script in the 'Lane Drag' section.",
-    "label": "Drag Lanes?",
     "type": "checkbox",
-    "checkboxLabel": "Yes",
     "value": "",
     "required": false
   }

@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Board from "react-trello";
 import MyCard from "./CustomCard";
-import MyLane from "./CustomLane";
 import themes from "./Style/themes";
-import useSWR, { mutate } from "swr";
-import { cardStyles } from "./Style/cardStyles";
+import { mutate } from "swr";
 import { boardStyleObj, laneStyleObj } from "./Style/boardStyles";
-import {
-  createLanesWithCards,
-  setStylesToCards,
-  reconfigureObj
-} from "./kanbanUtils";
+import { createLanesWithCards, reconfigureObj } from "./kanbanUtils";
 import { onCardClick, onLaneDragEnd, dispatchEventToFm } from "./kanbanEvents";
 import { useFindRecords } from "../../customHooks";
 // Add this in your component file
@@ -18,17 +12,27 @@ require("react-dom");
 window.React2 = require("react");
 // const
 
-function KanbanBoard(initialProps) {
+function KanbanBoard({ Config, webDirectRefresh }) {
   const draggable = true;
   const laneDraggable = false;
-  const cardDraggable = initialProps.Config.CardDraggable.value;
+  const cardDraggable = Config.CardDraggable.value;
   const tagStyles = {};
-  const theme = initialProps.Config.Style.value;
-  // const [theData, setData] = useState();
-  const [changes, setChanges] = useState([]);
-  const [{ data }, setData] = useState(useFindRecords("Kanban"));
-  let newData, lanesAndCards;
 
+  const theme = Config.Style.value;
+  // const [theData, setData] = useState();
+  const [{ data }] = useState(useFindRecords("Kanban"));
+  let newData, lanesAndCards;
+  if (webDirectRefresh === true) {
+    console.log(
+      "Kanban booting after a webd refresh",
+      webDirectRefresh === true
+    );
+    let cache = window.sessionStorage.getItem("kanban.cache");
+    try {
+      cache = JSON.parse(cache);
+      theme = cache.theme;
+    } catch (e) {}
+  }
   const onDragEnd = (
     cardId,
     sourceLaneId,
@@ -43,8 +47,8 @@ function KanbanBoard(initialProps) {
     const lane = lanesAndCards.filter(e => e.id === targetLaneId);
     const length = lane[0].cards.length;
     console.log(lane, length, position);
-    const thisCard = lane[0].cards.filter(e => e.id === cardId);
-    const thisCardSort = thisCard.sort;
+    // const thisCard = lane[0].cards.filter(e => e.id === cardId);
+    // const thisCardSort = thisCard.sort;
     const thisCardPosOld = lane[0].cards.findIndex(findCard);
 
     console.log(thisCardPosOld);
