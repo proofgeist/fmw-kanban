@@ -8,9 +8,6 @@ import { createLanesWithCards, reconfigureObj } from "./kanbanUtils";
 import { onCardClick, onLaneDragEnd, dispatchEventToFm } from "./kanbanEvents";
 import { useFindRecords } from "../../customHooks";
 // Add this in your component file
-require("react-dom");
-window.React2 = require("react");
-// const
 
 function KanbanBoard({ Config, webDirectRefresh }) {
   const draggable = true;
