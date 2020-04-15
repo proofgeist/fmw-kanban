@@ -19,6 +19,8 @@ function KanbanBoard({ Config, webDirectRefresh }) {
   // const [theData, setData] = useState();
   const [{ data }] = useState(useFindRecords("Kanban"));
   let newData, lanesAndCards;
+
+  //GET FORMATTED LANES AND CARDS
   if (webDirectRefresh === true) {
     console.log(
       "Kanban booting after a webd refresh",
@@ -27,9 +29,11 @@ function KanbanBoard({ Config, webDirectRefresh }) {
     let cache = window.sessionStorage.getItem("kanban.cache");
     try {
       cache = JSON.parse(cache);
-      theme = cache.theme;
+      lanesAndCards = cache.lanesAndCards;
     } catch (e) {}
   }
+
+  //NEEDS TO BE LOCAL IN THIS FILE
   const onDragEnd = (
     cardId,
     sourceLaneId,
@@ -41,14 +45,12 @@ function KanbanBoard({ Config, webDirectRefresh }) {
       return e.id === cardId;
     }
 
-    const lane = lanesAndCards.filter(e => e.id === targetLaneId);
+    const lane = lanesAndCards.filter((e) => e.id === targetLaneId);
     const length = lane[0].cards.length;
-    console.log(lane, length, position);
     // const thisCard = lane[0].cards.filter(e => e.id === cardId);
     // const thisCardSort = thisCard.sort;
     const thisCardPosOld = lane[0].cards.findIndex(findCard);
 
-    console.log(thisCardPosOld);
     let finalPos,
       prevPos,
       prevCard,
@@ -60,7 +62,6 @@ function KanbanBoard({ Config, webDirectRefresh }) {
       sameLane,
       setFinal,
       direction;
-    console.log(cardId);
     //check to see if there are two cards.
 
     isBeginning = position === 0;
@@ -71,13 +72,10 @@ function KanbanBoard({ Config, webDirectRefresh }) {
     } else {
       direction = null;
     }
-    console.log(isBeginning, isEnd);
-    console.log("Same lane", sameLane, "Direction", direction);
 
     //length =0: set position to be 0.
 
     if (length === 0) {
-      // alert("Len = 0");
       finalPos = 1;
       setFinal = true;
       isEnd = false;
@@ -85,28 +83,22 @@ function KanbanBoard({ Config, webDirectRefresh }) {
     }
     //there's one card in the lane already.
     else if (length === 1) {
-      // alert("len 1");
       //Is at the end of the lane
       if (isEnd) {
-        // alert("1 and end");
         const prevOneCardSort = lane[0].cards[length - 1].sort;
         finalPos = prevOneCardSort + 1;
         setFinal = true;
       }
       //at the beginning of the lane
       else if (isBeginning) {
-        // alert("1 and beg");
         prevPos = 0;
       }
     }
     //Same lane, moving up or down.
     else if (direction) {
-      // alert("direction");
       if (direction === "Up") {
-        // alert("Up");
         prevPos = Math.max(position - 1, 0);
       } else {
-        // alert("down");
         prevPos = position + 1;
         if (prevPos === length) {
           isEnd = true;
@@ -115,20 +107,16 @@ function KanbanBoard({ Config, webDirectRefresh }) {
     }
     //where the length of the lane is greater than one.
     else {
-      // alert("else");
       if (isBeginning) {
         prevPos = 0;
       } else {
-        // alert("prev");
         prevPos = position - 1;
       }
 
       //
     }
 
-    console.log("Pos", position, "Prev", prevPos);
     if (isEnd && !setFinal) {
-      // alert("End");
       const prevOneCard = lane[0].cards[length - 1].sort;
       const prevTwoCard = lane[0].cards[length - 2].sort || -1;
       finalPos = prevOneCard - prevTwoCard + prevOneCard;
@@ -136,37 +124,34 @@ function KanbanBoard({ Config, webDirectRefresh }) {
 
     if (!setFinal && !isEnd) {
       prevCard = lane[0].cards[prevPos];
-      console.log(prevCard);
       nextCard = lane[0].cards[position];
       nextSort = nextCard.sort;
       prevSort = isBeginning ? 0 : prevCard.sort;
       finalPos = (nextSort + prevSort) / 2;
     }
-    //length = 1 and isEnd
-    //length = 1 and isBeginning
-    //length > 1 and isEnd
-    //length > 1 and isBeginning
-    //length > 1
 
-    console.log("Pos", position, "prev", prevPos, "final", finalPos);
     const obj = {
       id: cardId,
       newStatus: targetLaneId,
-      newPos: finalPos
+      newPos: finalPos,
     };
 
     dispatchEventToFm("cardDrag", obj);
-    // setData(mutate("Kanban"));
-    console.log(lanesAndCards);
   };
 
   if (data) {
     newData = reconfigureObj(data);
     lanesAndCards = createLanesWithCards(newData);
-
-    // console.log("Unique", createLanesWithCards(newData));
-
-    //Need to set the data correctly.
+    //SET Lanes and cards to session storage
+    if (webDirectRefresh === true) {
+      //this will only run on WebD
+      window.sessionStorage.setItem(
+        "kanban.cache",
+        JSON.stringify({
+          lanesAndCards: lanesAndCards,
+        })
+      );
+    }
 
     function buildThemeColors(stylesToModify) {
       let styles = "";
@@ -186,10 +171,10 @@ function KanbanBoard({ Config, webDirectRefresh }) {
         <>
           <style
             dangerouslySetInnerHTML={{
-              __html: buildThemeColors(themes[theme])
+              __html: buildThemeColors(themes[theme]),
             }}
-          />
-        </>
+          />{" "}
+        </>{" "}
         <div>
           <Board
             draggable={draggable}
@@ -197,19 +182,25 @@ function KanbanBoard({ Config, webDirectRefresh }) {
             tagStyle={tagStyles}
             style={boardStyleObj}
             laneStyle={laneStyleObj}
-            data={{ lanes: lanesAndCards }}
+            data={{
+              lanes: lanesAndCards,
+            }}
             collapsiableLanes={false}
             handleDragEnd={onDragEnd}
             handleLaneDragEnd={onLaneDragEnd}
             onCardClick={onCardClick}
             // onLaneClick={callbacks.onLaneClick ? onLaneClick : null}
-            components={{ Card: MyCard }}
+            components={{
+              Card: MyCard,
+            }}
             laneDraggable={laneDraggable}
             cardDraggable={cardDraggable}
           >
-            <MyCard onClick={onCardClick} data={lanesAndCards}></MyCard>
-          </Board>
-        </div>
+            <MyCard onClick={onCardClick} data={lanesAndCards}>
+              {" "}
+            </MyCard>{" "}
+          </Board>{" "}
+        </div>{" "}
       </>
     );
   } else {

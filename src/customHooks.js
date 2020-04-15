@@ -1,6 +1,11 @@
-import { fmFetch, getConfig } from "fmw-utils";
+import {
+  fmFetch,
+  getConfig
+} from "fmw-utils";
 import useSWR from "swr";
-import { FIND_SCRIPT } from "./constants";
+import {
+  FIND_SCRIPT
+} from "./constants";
 /*
 Custom Hooks are your friend. 
 SWR makes it trivial to right hooks that keep the data up to date.
@@ -19,8 +24,13 @@ export const useFindRecords = query => {
     const req = {
       layouts: getConfig("DataSourceLayout"),
       limit: 500,
-      query: [{ [PrimaryKeyField]: "*" }],
-      sort: [{ fieldName: sortField, sortOrder: "ascend" }]
+      query: [{
+        [PrimaryKeyField]: "*"
+      }],
+      sort: [{
+        fieldName: sortField,
+        sortOrder: "ascend"
+      }]
     };
 
     const result = await fmFetch(FIND_SCRIPT, req);
@@ -30,19 +40,13 @@ export const useFindRecords = query => {
       );
     }
     const dataArray = result.response.data;
-    const obj = { style: getConfig("Style") };
-    if (window.onWebdInternalRefresh) {
-      // this will only run on WebD
-      window.sessionStorage.setItem(
-        "kanban.cache",
-        JSON.stringify({
-          theme: getConfig("Style")
-        })
-      );
-    }
+
+
     return dataArray;
   };
 
   //ask swr to take it from here.
-  return useSWR("Kanban", fetcher, { refreshInterval: 6000000 });
+  return useSWR("Kanban", fetcher, {
+    refreshInterval: 6000000
+  });
 };
