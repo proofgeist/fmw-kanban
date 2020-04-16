@@ -1,15 +1,34 @@
-import React, { useState } from "react";
-import Board from "react-trello";
+import React, {
+  useState
+} from "react";
+import Board from "@geistinteractive/react-trello";
 import MyCard from "./CustomCard";
 import themes from "./Style/themes";
-import { mutate } from "swr";
-import { boardStyleObj, laneStyleObj } from "./Style/boardStyles";
-import { createLanesWithCards, reconfigureObj } from "./kanbanUtils";
-import { onCardClick, onLaneDragEnd, dispatchEventToFm } from "./kanbanEvents";
-import { useFindRecords } from "../../customHooks";
+import {
+  mutate
+} from "swr";
+import {
+  boardStyleObj,
+  laneStyleObj
+} from "./Style/boardStyles";
+import {
+  createLanesWithCards,
+  reconfigureObj
+} from "./kanbanUtils";
+import {
+  onCardClick,
+  onLaneDragEnd,
+  dispatchEventToFm
+} from "./kanbanEvents";
+import {
+  useFindRecords
+} from "../../customHooks";
 // Add this in your component file
 
-function KanbanBoard({ Config, webDirectRefresh }) {
+function KanbanBoard({
+  Config,
+  webDirectRefresh
+}) {
   const draggable = true;
   const laneDraggable = false;
   const cardDraggable = Config.CardDraggable.value;
@@ -17,7 +36,9 @@ function KanbanBoard({ Config, webDirectRefresh }) {
 
   const theme = Config.Style.value;
   // const [theData, setData] = useState();
-  const [{ data }] = useState(useFindRecords("Kanban"));
+  const [{
+    data
+  }] = useState(useFindRecords("Kanban"));
   let newData, lanesAndCards;
 
   //GET FORMATTED LANES AND CARDS
@@ -166,42 +187,80 @@ function KanbanBoard({ Config, webDirectRefresh }) {
 
       return styles;
     }
-    return (
-      <>
-        <>
-          <style
-            dangerouslySetInnerHTML={{
-              __html: buildThemeColors(themes[theme]),
-            }}
-          />{" "}
-        </>{" "}
-        <div>
-          <Board
-            draggable={draggable}
-            editable={false}
-            tagStyle={tagStyles}
-            style={boardStyleObj}
-            laneStyle={laneStyleObj}
-            data={{
-              lanes: lanesAndCards,
-            }}
-            collapsiableLanes={false}
-            handleDragEnd={onDragEnd}
-            handleLaneDragEnd={onLaneDragEnd}
-            onCardClick={onCardClick}
-            // onLaneClick={callbacks.onLaneClick ? onLaneClick : null}
-            components={{
-              Card: MyCard,
-            }}
-            laneDraggable={laneDraggable}
-            cardDraggable={cardDraggable}
-          >
-            <MyCard onClick={onCardClick} data={lanesAndCards}>
-              {" "}
-            </MyCard>{" "}
-          </Board>{" "}
-        </div>{" "}
-      </>
+    return ( <
+      >
+      <
+      >
+      <
+      style dangerouslySetInnerHTML = {
+        {
+          __html: buildThemeColors(themes[theme]),
+        }
+      }
+      />{" "} < / > {
+        " "
+      } <
+      div >
+      <
+      Board draggable = {
+        draggable
+      }
+      editable = {
+        false
+      }
+      tagStyle = {
+        tagStyles
+      }
+      style = {
+        boardStyleObj
+      }
+      laneStyle = {
+        laneStyleObj
+      }
+      data = {
+        {
+          lanes: lanesAndCards,
+        }
+      }
+      collapsiableLanes = {
+        false
+      }
+      handleDragEnd = {
+        onDragEnd
+      }
+      handleLaneDragEnd = {
+        onLaneDragEnd
+      }
+      onCardClick = {
+        onCardClick
+      }
+      // onLaneClick={callbacks.onLaneClick ? onLaneClick : null}
+      components = {
+        {
+          Card: MyCard,
+
+        }
+      }
+      laneDraggable = {
+        laneDraggable
+      }
+      cardDraggable = {
+        cardDraggable
+      } >
+      <
+      MyCard onClick = {
+        onCardClick
+      }
+      data = {
+        lanesAndCards
+      } > {
+        " "
+      } <
+      /MyCard>{" "} < /
+      Board > {
+        " "
+      } <
+      /div>{" "} < / >
     );
   } else {
     return null;

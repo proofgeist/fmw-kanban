@@ -7,7 +7,7 @@ import {
   detailContentStyleObj,
   footerContentStyleObj,
   additionalContentStyleObj,
-  tagFieldStyleObj
+  tagFieldStyleObj,
 } from "./Style/boardStyles";
 import {
   CardHeader,
@@ -15,81 +15,90 @@ import {
   CardTitle,
   Detail,
   Footer,
-  TagSpan
-} from "react-trello/dist/styles/Base.js";
+  TagSpan,
+} from "@geistinteractive/react-trello/dist/styles/Base.js";
 import "./custom.css";
+
 function MyCard(initialProps) {
   const chosenStyle = initialProps.cardStyle;
   const thisStyle = cardStyles[chosenStyle] || {};
 
-  const circle = { ...thisStyle.circle };
+  const circle = {
+    ...thisStyle.circle,
+  };
   const theCardStyle = {
     ...cardStyleObj,
-    ...thisStyle.card
+    ...thisStyle.card,
   };
   const theTitleStyle = {
     ...titleContentStyleObj,
-    ...thisStyle.title
+    ...thisStyle.title,
   };
   const theRightStyle = {
     ...rightContentStyleObj,
-    ...thisStyle.label
+    ...thisStyle.label,
   };
   const theDescStyle = {
     ...detailContentStyleObj,
-    ...thisStyle.descrpition
+    ...thisStyle.descrpition,
   };
   const theadditionalStyle = {
     ...additionalContentStyleObj,
-    ...thisStyle.additional
+    ...thisStyle.additional,
   };
   const theFooterStyle = {
-    ...footerContentStyleObj
+    ...footerContentStyleObj,
   };
-  const theTagStyle = { ...tagFieldStyleObj };
+  const theTagStyle = {
+    ...tagFieldStyleObj,
+  };
   return (
     <div className="card" style={theCardStyle} onClick={initialProps.onClick}>
       <CardHeader>
         <CardTitle className="cardTitle" style={theTitleStyle}>
-          {initialProps.title}
-        </CardTitle>
+          {" "}
+          {initialProps.title}{" "}
+        </CardTitle>{" "}
         <CardRightContent className="label" style={theRightStyle}>
-          {initialProps.label}
-        </CardRightContent>
+          {" "}
+          {initialProps.label}{" "}
+        </CardRightContent>{" "}
       </CardHeader>
-
       {initialProps.description && (
-        <Detail style={theDescStyle}>{initialProps.description}</Detail>
-      )}
+        <Detail style={theDescStyle}> {initialProps.description} </Detail>
+      )}{" "}
       {theadditionalStyle && (
         <Detail className="additionalInfo" style={theadditionalStyle}>
-          {initialProps.additional}
+          {" "}
+          {initialProps.additional}{" "}
         </Detail>
-      )}
+      )}{" "}
       {initialProps.assignedTo ? (
         <div className="flexButtonRowRight">
           <div className="itemBy" style={circle}>
-            {initialProps.assignedTo}
-          </div>
+            {" "}
+            {initialProps.assignedTo}{" "}
+          </div>{" "}
         </div>
       ) : (
         ""
-      )}
+      )}{" "}
       {initialProps.tags && (
         <Footer style={theFooterStyle}>
-          {initialProps.tags.map(tag => (
+          {" "}
+          {initialProps.tags.map((tag) => (
             <TagSpan
               style={{
                 ...theTagStyle,
                 backgroundColor: tag.bgcolor,
-                color: tag.color
+                color: tag.color,
               }}
             >
-              {tag.title}
+              {tag.title}{" "}
             </TagSpan>
-          ))}
+          ))}{" "}
         </Footer>
-      )}
+      )}{" "}
     </div>
   );
 }

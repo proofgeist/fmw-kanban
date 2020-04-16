@@ -5,10 +5,11 @@ export const laneStyleObj = {
   paddingTop: "20px",
   width: "375px",
   fontSize: "24px",
-  borderRadius: "10px",
-  flexBasis: "auto !important"
+  borderRadius: "10px"
 };
-export const boardStyleObj = { backgroundColor: "#fff" };
+export const boardStyleObj = {
+  backgroundColor: "#fff"
+};
 export const cardStyleObj = {
   boxShadow: "3px 5px 4px -4px rgba(0,0,0,0.68)",
   backgroundColor: "#fff",
@@ -19,8 +20,7 @@ export const cardStyleObj = {
   paddingBottom: "10px",
   marginBottom: "10px",
   marginRight: "20px",
-  marginLeft: "20px",
-  flexBasis: "auto !important"
+  marginLeft: "20px"
 };
 export const titleContentStyleObj = {
   textAlign: "Left",
@@ -52,4 +52,6 @@ export const additionalContentStyleObj = {
   paddingBottom: "20px"
   // backgroundColor: "white"
 };
-export const tagFieldStyleObj = { fontSize: "70%" };
+export const tagFieldStyleObj = {
+  fontSize: "70%"
+};
